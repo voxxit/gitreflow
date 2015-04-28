@@ -282,7 +282,7 @@ describe GitReflow do
               end
 
               it "pushes local squash merged base branch to remote repo" do
-                expect { subject }.to have_run_command("git push origin master")
+                expect { subject }.to have_run_command("git push origin master --force")
               end
 
               it "deletes the remote feature branch" do

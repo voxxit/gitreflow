@@ -64,8 +64,11 @@ module GitReflow
   end
 
   def deliver(options = {})
-    feature_branch    = current_branch
-    options['base'] ||= 'master'
+    feature_branch = current_branch
+
+    options['base']  ||= 'master'
+    options['force'] ||= true
+
     fetch_destination options['base']
 
     update_destination(current_branch)
@@ -101,7 +104,9 @@ module GitReflow
             say "Merge complete!", :success
             deploy_and_cleanup = ask "Would you like to push this branch to your remote repo and cleanup your feature branch? "
             if deploy_and_cleanup =~ /^y/i
-              run_command_with_label "git push origin #{options['base']}"
+              force = options["force"].to_s == "true" ? "--force" : ""
+
+              run_command_with_label [ "git push origin #{options['base']}", force ].join(" ")
               run_command_with_label "git push origin :#{feature_branch}"
               run_command_with_label "git branch -D #{feature_branch}"
               puts "Nice job buddy."
