@@ -1,14 +1,14 @@
 # Ensure we require the local version and not one we might have installed already
 require File.join([File.dirname(__FILE__),'lib','git_reflow/version.rb'])
 spec = Gem::Specification.new do |s|
-  s.name             = 'git_reflow'
+  s.name             = 'reflow'
   s.version          = GitReflow::VERSION
   s.license          = 'MIT'
   s.authors          = ["Valentino Stoll", "Robert Stern", "Nicholas Hance"]
   s.email            = ["dev@reenhanced.com"]
   s.homepage         = "http://github.com/reenhanced/gitreflow"
-  s.summary          = "A better git process"
-  s.description      = "Git Reflow manages your git workflow."
+  s.summary          = "A better GitHub workflow"
+  s.description      = "Manages your GitHub workflow."
   s.platform         = Gem::Platform::RUBY
   s.files            = `git ls-files`.split("\n")
   s.test_files       = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -17,7 +17,7 @@ spec = Gem::Specification.new do |s|
   s.extra_rdoc_files = ['README.rdoc']
   s.bindir           = 'bin'
   s.require_paths    << 'lib'
-  s.rdoc_options     << '--title' << 'git_reflow' << '--main' << 'README.rdoc' << '-ri'
+  s.rdoc_options     << '--title' << 'reflow' << '--main' << 'README.rdoc' << '-ri'
 
   s.add_development_dependency('appraisal', '1.0.3')
   s.add_development_dependency('bundler')
